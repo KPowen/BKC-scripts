@@ -7,7 +7,7 @@ function clique_proposals {
   read
 }
 
-function clique_purpose {
+function clique_propose {
 #while true; do
  echo "Current Proposals : "
  clique_proposals
@@ -30,17 +30,36 @@ function admin_addpeer {
  done
 }
 
-FUNCTIONS=("clique_proposals" "clique_purpose" "admin_addpeer")
+PS3="Select function: "
+FUNCTIONS=("clique_proposals" "clique_propose" "admin_addpeer")
 #MAIN
-
-while :
-do
-  clear
-  "Current functions are : "
-  for i in "${FUNCTIONS[@]}"
-  do
-    echo "$i"
-  done
-  read -p "type in function: " FUNC
-  $FUNC
+select i in "${FUNCTIONS[@]}"; do
+	case $i in
+	${FUNCTIONS[0]} )
+		echo "These is ${FUNCTIONS[0]}"
+		;;
+	${FUNCTIONS[1]} )
+		echo "This is ${FUNCTIONS[1]}"
+		;;
+	${FUNCTIONS[2]} )
+		echo "This is ${FUNCTIONS[2]}"
+		;;
+        ${FUNCTIONS[3]} )
+                echo "This is ${FUNCTIONS[3]}"
+                ;;
+	*)
+		echo "Please select available functions."
+		;;
+	esac
 done
+#while :
+#do
+#  clear
+#  "Current functions are : "
+#  for i in "${FUNCTIONS[@]}"
+#  do
+#    echo "$i"
+#  done
+#  read -p "type in function: " FUNC
+#  $FUNC
+#done
